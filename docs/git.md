@@ -8,6 +8,14 @@ git rm -rf .
 git commit --allow-empty -m "Empty commit"
 ```
 
+## Remove Stale Branches
+
+To **remove local branches** that no longer exist on the remote repository (often called "stale" or "orphaned" branches), you can use the following multi-step command in your terminal:
+
+```shell
+git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d
+```
+
 ## Multiple GitHub Accounts
 
 Exchange `kind` with the type of a connection, ex. work, personal etc.
