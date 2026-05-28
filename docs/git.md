@@ -51,7 +51,7 @@ nano ~/.ssh/config
 Host gh-kind
   HostName github.com
   User git
-  IdentityFile ~/.ssh/id_ed25519_kind.pub
+  IdentityFile ~/.ssh/id_ed25519_kind
 ```
 
 Clone repository
