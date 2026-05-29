@@ -17,6 +17,7 @@ brew install --cask google-chrome
 brew install --cask spotify
 brew install --cask boop
 brew install --cask keka
+brew install --cask google-drive
 ```
 
 ### Communicators
@@ -25,6 +26,7 @@ brew install --cask keka
 brew install --cask whatsapp
 brew install --cask slack
 brew install --cask discord
+brew install --cask microsoft-teams
 brew install --cask zoom
 ```
 
@@ -53,6 +55,13 @@ brew install --cask inkscape
 brew install --cask xnviewmp
 ```
 
+### Office
+
+```sh
+brew install --cask microsoft-office
+brew install --cask libreoffice
+```
+
 ### Misc
 
 ```sh
@@ -77,7 +86,6 @@ brew install --cask logseq
 
 # Misc
 brew install --cask caffeine
-brew install --cask libreoffice
 brew install --cask vlc
 brew install --cask balenaetcher
 brew install kettle
