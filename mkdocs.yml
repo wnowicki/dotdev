@@ -9,6 +9,7 @@ copyright: 2026, Wojciech Nowicki
 nav:
   - Home: index.md
   - GIT: git.md
+  - MacOS: macos.md
 
 theme:
   name: material
