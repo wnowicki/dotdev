@@ -66,3 +66,9 @@ git clone git@gh-kind:wnowicki/dotdev.git
 git config user.name "username"
 git config user.email "your_email@example.com"
 ```
+
+## List deleted files
+
+```shell
+git log --diff-filter=D --summary
+```
