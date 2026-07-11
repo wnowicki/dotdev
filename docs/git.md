@@ -72,3 +72,11 @@ git config user.email "your_email@example.com"
 ```shell
 git log --diff-filter=D --summary
 ```
+
+## Compress repository
+
+This will compress all tracked files (ignoring ignored) for archiving
+
+```shell
+git archive HEAD -o ${PWD##*/}.zip
+```
