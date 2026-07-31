@@ -18,6 +18,7 @@ brew install --cask spotify
 brew install --cask boop
 brew install --cask keka
 brew install --cask google-drive
+brew install midnight-commander
 ```
 
 ### Communicators
