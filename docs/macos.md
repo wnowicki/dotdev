@@ -86,6 +86,9 @@ brew install --cask obsidian
 brew install --cask logseq
 
 # Misc
+brew install apfel # apple intelligence
+brew install silicon # code screenshots
+brew install vhs # terminal reecording
 brew install --cask caffeine
 brew install --cask vlc
 brew install --cask balenaetcher
