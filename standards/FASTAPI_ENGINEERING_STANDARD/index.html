@@ -1,0 +1,1222 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Wojciech Nowicki">
+      
+      
+        <link rel="canonical" href="https://wnowicki.dev/standards/FASTAPI_ENGINEERING_STANDARD/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>FastAPI Engineering Standard - DotDev</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fastapi-engineering-standard" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DotDev" class="md-header__button md-logo" aria-label="DotDev" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DotDev
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              FastAPI Engineering Standard
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/wnowicki/dotdev" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    wnowicki/dotdev
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DotDev" class="md-nav__button md-logo" aria-label="DotDev" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DotDev
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/wnowicki/dotdev" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    wnowicki/dotdev
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GIT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../macos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MacOS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-core-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Core principles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-approved-project-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Approved project structures
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Approved project structures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-focused-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Focused service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-substantial-product" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Substantial product
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-structure-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Structure rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-architecture-and-dependency-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Architecture and dependency direction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-python-and-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Python and dependencies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-application-construction-and-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Application construction and lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-sync-async-and-concurrency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Sync, async, and concurrency
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-api-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. API contracts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-models-and-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Models and validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-persistence-and-transactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Persistence and transactions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Security
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Credentials
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-multi-tenancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Multi-tenancy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-external-integrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. External integrations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-ai-and-llm-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. AI and LLM profile
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-background-jobs-and-ml-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Background jobs and ML profile
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-errors-and-resilience" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Errors and resilience
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Observability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-quality-tooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Quality tooling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-containers-and-delivery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Containers and delivery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-documentation-and-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        20. Documentation and workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21-standard-project-profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        21. Standard project profiles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-definition-of-done" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        22. Definition of done
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-explicitly-discouraged-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        23. Explicitly discouraged patterns
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="fastapi-engineering-standard">FastAPI Engineering Standard</h1>
+<p>Status: Version 1.0<br />
+Scope: New FastAPI projects and incremental modernization of existing projects</p>
+<h2 id="1-purpose">1. Purpose</h2>
+<p>This standard defines the shared engineering baseline for FastAPI applications. It combines practices proven across focused AI services, relational products, public multi-tenant APIs, and ML/background-processing systems.</p>
+<p>The standard is intentionally adaptive:</p>
+<ul>
+<li>new projects follow it from inception;</li>
+<li>existing projects adopt it incrementally when affected code is materially changed;</li>
+<li>project-specific decisions override defaults only when documented;</li>
+<li>architecture must remain proportional to the project;</li>
+<li>mechanical rules should be enforced by tooling rather than prose alone.</li>
+</ul>
+<p>The terms <strong>must</strong>, <strong>should</strong>, and <strong>may</strong> indicate requirement, preferred default, and permitted option respectively.</p>
+<h2 id="2-core-principles">2. Core principles</h2>
+<ul>
+<li>Choose the smallest architecture that keeps responsibilities and dependencies clear.</li>
+<li>Keep transport, business logic, persistence, and external integrations separate.</li>
+<li>Make lifecycle, transaction, security, and failure behavior explicit.</li>
+<li>Validate data at every untrusted boundary.</li>
+<li>Prefer composition and dependency injection over hidden global construction.</li>
+<li>Optimize for maintainability and operational correctness, not architectural ceremony.</li>
+<li>Do not reorganize stable code merely for conformity; migrate when there is material value.</li>
+</ul>
+<h2 id="3-approved-project-structures">3. Approved project structures</h2>
+<h3 id="31-focused-service">3.1 Focused service</h3>
+<p>Use a layer-oriented structure for a small service with a narrow purpose and few business concepts:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>app/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── main.py
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── application.py
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── core.py
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>├── admin/
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│   ├── base.py
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│   └── main.py
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>├── api/
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   ├── dependencies.py
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   ├── error_handlers.py
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│   ├── middleware.py
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│   ├── router.py
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│   └── routes/
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>├── models/
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>├── services/
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>├── repositories/
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│   └── base.py
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>├── gateways/
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>└── infrastructure/
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>tests/
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>├── unit/
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>├── integration/
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>├── contract/
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>└── fixtures/
+</code></pre></div>
+<h3 id="32-substantial-product">3.2 Substantial product</h3>
+<p>Use feature-oriented modules for a product with several independently evolving business capabilities:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>app/
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── main.py
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>├── application.py
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>├── core.py
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>├── admin/
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│   ├── base.py
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│   └── main.py
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>├── api/
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│   ├── dependencies.py
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│   ├── error_handlers.py
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│   ├── middleware.py
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│   ├── health.py
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│   └── router.py
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>├── features/
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>│   ├── feature_name/
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>│   │   ├── api.py
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>│   │   ├── schemas.py
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>│   │   ├── service.py
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>│   │   ├── repository.py
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>│   │   ├── tables.py
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>│   │   └── errors.py
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>│   └── another_feature/
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>├── infrastructure/
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>│   ├── database/
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>│   ├── clients/
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>│   └── telemetry/
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>├── ui/
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>├── cli/
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>└── workers/
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>tests/
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>├── features/
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>├── integration/
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>├── contract/
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>├── migrations/
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>└── fixtures/
+</code></pre></div>
+<h3 id="33-structure-rules">3.3 Structure rules</h3>
+<ul>
+<li>A feature must have one obvious home.</li>
+<li>Business rules must not be duplicated across API, UI, CLI, and workers.</li>
+<li>Transport adapters must not contain persistence queries or core business rules.</li>
+<li>Features must not import another feature's private persistence implementation.</li>
+<li>Cross-feature behavior must use an explicit service or public feature interface.</li>
+<li>Avoid generic dumping grounds such as <code>utils.py</code>, <code>helpers.py</code>, and an oversized <code>core.py</code>.</li>
+<li>Create modules when responsibilities exist; do not create speculative empty layers.</li>
+<li><code>app/</code> is the default for deployable applications. Use <code>src/&lt;package&gt;/</code> when building an installable library, multiple distributions, or when import isolation provides concrete value.</li>
+<li>Existing repositories do not need structural migration without a substantive reason.</li>
+</ul>
+<h2 id="4-architecture-and-dependency-direction">4. Architecture and dependency direction</h2>
+<ul>
+<li>FastAPI routes depend on application services or use cases.</li>
+<li>Application services coordinate business rules, authorization, repositories, and gateways.</li>
+<li>Repositories isolate persistence queries.</li>
+<li>Gateways isolate external APIs, search engines, LLM providers, email, object storage, and similar systems.</li>
+<li>Domain and application logic must not import FastAPI.</li>
+<li>Concrete infrastructure dependencies should be injected rather than constructed inside business operations.</li>
+<li>Repository protocols are optional. Use them when multiple implementations, legacy boundaries, isolated testing, or strong dependency inversion justify them.</li>
+<li>Public persistence-independent models are required when persistence entities contain private or internal fields.</li>
+</ul>
+<h2 id="5-python-and-dependencies">5. Python and dependencies</h2>
+<ul>
+<li>Use <code>uv</code> and commit <code>uv.lock</code>.</li>
+<li>Run project tools through <code>uv run</code>.</li>
+<li>CI and production builds must use frozen dependency installation.</li>
+<li>Separate production and development dependencies. Add optional groups for load tests, ML, or operational tools when useful.</li>
+<li>Each repository chooses an approved stable Python version.</li>
+<li><code>pyproject.toml</code>, <code>.python-version</code>, Ruff, CI, containers, and documentation must agree on supported Python versions.</li>
+<li>Do not maintain compatibility matrices that are neither required nor tested.</li>
+<li>Dependency additions and updates must include lock-file changes and pass the full quality pipeline.</li>
+</ul>
+<h2 id="6-application-construction-and-lifecycle">6. Application construction and lifecycle</h2>
+<ul>
+<li>New projects must use an application factory.</li>
+<li><code>main.py</code> should expose the production application and contain minimal logic.</li>
+<li><code>application.py</code> should act as the composition root for middleware, exception handlers, routers, and lifecycle resources.</li>
+<li>Long-lived resources must be created and closed through FastAPI lifespan or another explicit lifecycle owner.</li>
+<li>This includes database engines, HTTP clients, Elasticsearch/OpenSearch clients, Redis, LLM clients, and integration gateways.</li>
+<li>Imports must not open network connections, databases, or log files.</li>
+<li>Reusable dependencies should use typed <code>Annotated</code> aliases.</li>
+<li>Router prefixes, tags, and shared dependencies should be declared on <code>APIRouter</code> where applicable.</li>
+</ul>
+<h2 id="7-sync-async-and-concurrency">7. Sync, async, and concurrency</h2>
+<ul>
+<li>Synchronous relational persistence is the default for new projects unless end-to-end asynchronous I/O has a demonstrated benefit.</li>
+<li>Synchronous stacks should use synchronous FastAPI route functions.</li>
+<li><code>async def</code> should be used only when the relevant call chain is non-blocking.</li>
+<li>Blocking I/O must not execute directly on the event loop.</li>
+<li>When blocking dependencies cannot be replaced, use an explicit and bounded thread boundary.</li>
+<li>External fan-out must be bounded.</li>
+<li>Long operations must define timeouts, cancellation, resource cleanup, and graceful shutdown behavior.</li>
+</ul>
+<h2 id="8-api-contracts">8. API contracts</h2>
+<ul>
+<li>Every externally consumed endpoint must declare validated request and explicit public response schemas.</li>
+<li>Persistence models containing internal or sensitive fields must not be returned directly.</li>
+<li>Separate persistence/table, create, partial-update, public response, domain, and external DTO models where those concepts differ.</li>
+<li>Partial updates should use optional fields and <code>exclude_unset</code>.</li>
+<li>Collection endpoints must enforce page-size bounds and deterministic ordering.</li>
+<li>Every project must select and document one pagination contract.</li>
+<li>APIs must use a stable, sanitized error envelope with a machine-readable code, safe message, and request ID.</li>
+<li>Exception-to-HTTP translation should be centralized.</li>
+<li>Invalid input, authentication failure, authorization failure, missing resources, conflicts, dependency failure, timeout, and unexpected failure must remain distinguishable where relevant.</li>
+<li>Public APIs must explicitly define versioning, compatibility, deprecation, idempotency, and optimistic-concurrency policies.</li>
+<li>Select the representation format based on the project. Prefer JSON:API for larger public-facing resource APIs with rich relationships and long-lived external consumers; do not require it universally.</li>
+</ul>
+<h2 id="9-models-and-validation">9. Models and validation</h2>
+<ul>
+<li>Use Pydantic at HTTP, configuration, external API, search-document, worker-message, and structured LLM-output boundaries.</li>
+<li>Public models should be explicit and reject unintended fields unless extensibility is deliberate.</li>
+<li>Centralize reusable constrained types for identifiers, email, UTC datetimes, pagination, and domain codes.</li>
+<li>Nullable fields must use explicit optional types.</li>
+<li>Generated, mutable, and time-dependent defaults must use <code>default_factory</code>.</li>
+<li>Use timezone-aware UTC internally and at persistence boundaries.</li>
+<li>Serialize datetimes consistently using ISO 8601.</li>
+<li>Do not rely on the host's local timezone.</li>
+</ul>
+<h2 id="10-persistence-and-transactions">10. Persistence and transactions</h2>
+<ul>
+<li>Request-scoped sessions must be yielded and reliably closed.</li>
+<li>Workers, CLI commands, and scheduled jobs must use explicit context-managed sessions.</li>
+<li>Do not acquire sessions using <code>next(get_session())</code>.</li>
+<li>The application service or use case should normally own commit and rollback.</li>
+<li>Repositories should normally flush rather than commit.</li>
+<li>Generic CRUD methods must not perform hidden commits.</li>
+<li>A repository or adapter may own a transaction only when the operation is explicitly atomic, self-contained, clearly documented, and not expected to join a larger business transaction.</li>
+<li>Introduce a unit of work when multi-repository coordination justifies it; do not mandate it for simple operations.</li>
+<li>Relational projects must use Alembic or an explicitly approved equivalent.</li>
+<li>Autogenerated migrations must be reviewed.</li>
+<li>CI must verify upgrading an empty database to the current migration head.</li>
+<li>Database-specific queries and migrations must be tested against the production database family.</li>
+<li>Externally owned schemas should be isolated and treated as read-only unless ownership is explicit.</li>
+</ul>
+<h2 id="11-security">11. Security</h2>
+<ul>
+<li>Secrets must come from typed settings or an approved secret provider.</li>
+<li>Secret-bearing <code>.env</code> files must not be committed.</li>
+<li>Example environment files contain names and safe placeholders only.</li>
+<li>Production startup must reject known example secrets, missing mandatory credentials, debug settings, and unsafe CORS configuration.</li>
+<li>Never log credentials, passwords, bearer tokens, session identifiers, secret settings, or private data without an explicit approved policy.</li>
+<li>CORS must be configured explicitly per environment. Wildcard origins must not be combined with credentialed requests.</li>
+<li>M2M services should omit CORS unless a browser consumer exists.</li>
+<li>Authorization, ownership, consent, and tenant rules must be enforced below the transport layer.</li>
+<li>Security enforcement outside the application must be documented.</li>
+<li>CI should include dependency, secret, and container scanning.</li>
+</ul>
+<h3 id="111-credentials">11.1 Credentials</h3>
+<ul>
+<li>Generate high-entropy opaque credentials.</li>
+<li>Persist only credential hashes.</li>
+<li>Reveal raw credentials only once.</li>
+<li>Support expiry, revocation, and rotation where the threat model requires them.</li>
+<li>Use modern password hashing and timing-safe, non-revealing authentication behavior.</li>
+</ul>
+<h3 id="112-multi-tenancy">11.2 Multi-tenancy</h3>
+<ul>
+<li>Resolve tenant context from trusted authentication data, not client-supplied tenant identifiers.</li>
+<li>Scope every tenant-owned repository operation structurally.</li>
+<li>Prevent downstream calls or writes until ownership is established.</li>
+<li>Hide cross-tenant resource existence with <code>404</code> when appropriate.</li>
+<li>Test tenant isolation and negative authorization paths explicitly.</li>
+</ul>
+<h2 id="12-external-integrations">12. External integrations</h2>
+<p>Each integration must define:</p>
+<ul>
+<li>typed request and response models;</li>
+<li>connection and operation timeouts;</li>
+<li>retry and backoff behavior;</li>
+<li>retryable and terminal failure categories;</li>
+<li>idempotency implications;</li>
+<li>error translation;</li>
+<li>lifecycle and cleanup;</li>
+<li>logging, metrics, and redaction;</li>
+<li>partial-failure behavior.</li>
+</ul>
+<p>Reuse clients, validate responses, bound fan-out, and distinguish missing data from dependency unavailability. Do not use excessive retries to conceal a dependency that violates the endpoint latency budget.</p>
+<h2 id="13-ai-and-llm-profile">13. AI and LLM profile</h2>
+<p>When using LLMs:</p>
+<ul>
+<li>isolate provider SDKs behind gateways;</li>
+<li>validate structured output;</li>
+<li>version prompts as product behavior;</li>
+<li>define model allowlists, timeout, retries, concurrency, token limits, cost budgets, and fallback behavior;</li>
+<li>capture model, prompt version, token usage, duration, and result status where permitted;</li>
+<li>use fixture-backed regression tests for malformed model and source-data output;</li>
+<li>do not log full prompts, documents, or responses without an explicit data-handling decision.</li>
+</ul>
+<h2 id="14-background-jobs-and-ml-profile">14. Background jobs and ML profile</h2>
+<ul>
+<li>Separate heavyweight and ordinary workloads when their operational characteristics differ.</li>
+<li>Define task idempotency, retryable failures, time limits, typed results or persisted status, and graceful shutdown.</li>
+<li>Propagate request and trace context into jobs.</li>
+<li>Failed jobs must fail observably; do not return an error payload that causes the queue to record success.</li>
+<li>Store large artifacts in object storage rather than images or local container state.</li>
+<li>Record model provenance and build metadata.</li>
+<li>Keep training workloads separate from request-serving processes.</li>
+<li>Define memory and concurrency budgets.</li>
+</ul>
+<h2 id="15-errors-and-resilience">15. Errors and resilience</h2>
+<ul>
+<li>Define application/domain and infrastructure exception families.</li>
+<li>Translate vendor exceptions at adapter boundaries.</li>
+<li>Translate application exceptions into HTTP or worker-specific responses centrally.</li>
+<li>Never map all unexpected dependency failures to <code>404</code>.</li>
+<li>Define timeout, retry, cancellation, and rollback behavior for failure-sensitive operations.</li>
+<li>Unexpected client-facing errors must not reveal stack traces, queries, credentials, or vendor response bodies.</li>
+</ul>
+<h2 id="16-observability">16. Observability</h2>
+<ul>
+<li>New projects must produce structured JSON logs and request IDs.</li>
+<li>Containerized applications must log to stdout/stderr.</li>
+<li>Avoid local rotating files unless the deployment explicitly collects them.</li>
+<li>Use parameterized logging and centralized redaction.</li>
+<li>Validate or replace incoming request IDs according to a documented trust policy.</li>
+<li>Propagate correlation to outbound calls, jobs, audit records, and usage records.</li>
+<li>Provide shallow liveness and dependency-aware readiness endpoints.</li>
+<li>Deployed services must expose request count, latency, errors, and dependency health metrics.</li>
+<li>Worker services should expose queue depth and task outcomes.</li>
+<li>Use OpenTelemetry-compatible instrumentation for traces and metrics.</li>
+<li>Instrument FastAPI, outbound HTTP, persistence, Redis, and workers where applicable.</li>
+<li>Exporters are environment-specific; local development and tests must work without a collector.</li>
+<li>Distributed tracing may remain disabled for small deployments, but instrumentation should be configurable without redesign.</li>
+<li>Telemetry must not capture sensitive payloads by default.</li>
+</ul>
+<h2 id="17-testing">17. Testing</h2>
+<ul>
+<li>Use pytest and add async support only for async behavior.</li>
+<li>Test observable success and relevant failure paths.</li>
+<li>Every production defect fix must include a focused regression test.</li>
+<li>Use committed fixtures for complex and malformed real-world data.</li>
+<li>Tests must be deterministic and isolated, and must close engines and clients.</li>
+<li>Override FastAPI dependencies explicitly in API tests.</li>
+<li>Mock integrations at adapter boundaries and add critical integration or contract tests where feasible.</li>
+<li>Database projects must test repository behavior, rollback, migrations, and database-specific behavior.</li>
+<li>Public APIs must test response and error contracts and should validate OpenAPI compatibility.</li>
+<li>Security-sensitive features must include negative-path tests.</li>
+<li>There is no universal numerical coverage threshold. Projects may set thresholds based on risk; changed behavior and critical paths must be covered regardless of percentage.</li>
+</ul>
+<h2 id="18-quality-tooling">18. Quality tooling</h2>
+<ul>
+<li>Use Ruff for formatting, imports, linting, FastAPI rules, and baseline security checks.</li>
+<li>Static type checking is mandatory.</li>
+<li>Prefer <code>ty</code> for new projects when compatible with the selected framework and libraries.</li>
+<li>Combine <code>ty</code> with appropriate Ruff <code>ANN</code> and <code>PYI</code> rules.</li>
+<li>Existing mypy projects may retain mypy until a verified migration is worthwhile.</li>
+<li>Do not retain two type checkers permanently without demonstrated value.</li>
+<li>Use one pinned tool configuration locally, in pre-commit, and in CI.</li>
+<li>CI must run <code>ruff check</code>, <code>ruff format --check</code>, type checking, and tests.</li>
+<li>Add migration, security, documentation, and container checks when applicable.</li>
+<li>Suppressions must be narrow and use rule codes; explain non-obvious exceptions.</li>
+<li>Remove obsolete tooling configuration when a tool has been replaced.</li>
+</ul>
+<h2 id="19-containers-and-delivery">19. Containers and delivery</h2>
+<ul>
+<li>Use a pinned base image compatible with the declared Python version.</li>
+<li>Install from the frozen lock file.</li>
+<li>Build cache-efficient images and copy only required runtime files.</li>
+<li>Run as a non-root user.</li>
+<li>Avoid floating production image and tool tags.</li>
+<li>Log to stdout/stderr and do not assume persistent writable storage.</li>
+<li>Support graceful termination.</li>
+<li>Provide appropriate liveness and readiness probes.</li>
+<li>Run migrations as an explicit deployment operation, not an import-time side effect.</li>
+<li>Required quality gates must pass before publishing deployable images.</li>
+<li>Pin CI actions according to the organization's supply-chain policy.</li>
+<li>Document rollback and post-deployment verification.</li>
+</ul>
+<h2 id="20-documentation-and-workflow">20. Documentation and workflow</h2>
+<p>Each repository must document:</p>
+<ul>
+<li>purpose and consumers;</li>
+<li>architecture and important boundaries;</li>
+<li>supported Python version;</li>
+<li>setup and local execution;</li>
+<li>environment variables;</li>
+<li>test, lint, format, and type-check commands;</li>
+<li>migrations and seed data;</li>
+<li>containers and deployment entrypoints;</li>
+<li>workers and scheduled tasks;</li>
+<li>health endpoints and authentication model;</li>
+<li>definition of done.</li>
+</ul>
+<p>Documentation must distinguish read-only checks, automatic fixes, generated changes, and destructive/reset commands. Destructive commands require explicit safeguards.</p>
+<p>Consequential architecture decisions should use short ADRs containing context, decision, consequences, and scope. Documentation and <code>AGENTS.md</code> must describe the current repository, not an aspirational future state.</p>
+<h2 id="21-standard-project-profiles">21. Standard project profiles</h2>
+<p>Start with the Core profile and add only profiles the project needs:</p>
+<table>
+<thead>
+<tr>
+<th>Profile</th>
+<th>Additional requirements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Core FastAPI</td>
+<td>Settings, factory, lifespan, error contract, observability, health, Ruff, type checker, pytest, Docker, CI</td>
+</tr>
+<tr>
+<td>Relational CRUD</td>
+<td>SQLModel/SQLAlchemy, transaction ownership, Alembic, migration tests</td>
+</tr>
+<tr>
+<td>Public API</td>
+<td>Versioning, stable errors, contract tests, authentication scopes, rate limits, request IDs</td>
+</tr>
+<tr>
+<td>Multi-tenant SaaS</td>
+<td>Credential-derived tenant context, scoped repositories, isolation tests</td>
+</tr>
+<tr>
+<td>JSON:API</td>
+<td>Media types, serializers, relationships, includes, JSON:API errors</td>
+</tr>
+<tr>
+<td>Search-backed</td>
+<td>Search gateway, validated documents, bounded queries, readiness checks</td>
+</tr>
+<tr>
+<td>AI/LLM</td>
+<td>Provider gateway, prompt versions, structured output, usage and cost controls</td>
+</tr>
+<tr>
+<td>Worker/ML</td>
+<td>Queue policy, idempotency, retries, task state, artifact storage</td>
+</tr>
+<tr>
+<td>Embedded admin/UI</td>
+<td>Exposure controls, session security, CSRF analysis, audit trail</td>
+</tr>
+</tbody>
+</table>
+<h2 id="22-definition-of-done">22. Definition of done</h2>
+<p>A change is complete when applicable:</p>
+<ul>
+<li>behavior and acceptance criteria are implemented;</li>
+<li>architecture and dependency rules are preserved;</li>
+<li>success, failure, authorization, and regression tests are present;</li>
+<li>Ruff formatting and lint checks pass;</li>
+<li>static type checking passes;</li>
+<li>migrations are reviewed and tested;</li>
+<li>public contracts and documentation are updated;</li>
+<li>configuration examples are updated without secrets;</li>
+<li>security and privacy implications are addressed;</li>
+<li>observability is sufficient to operate the change;</li>
+<li>the container builds and relevant CI checks pass;</li>
+<li>no unrelated cleanup or speculative abstractions were introduced.</li>
+</ul>
+<h2 id="23-explicitly-discouraged-patterns">23. Explicitly discouraged patterns</h2>
+<p>Do not introduce without a documented exception:</p>
+<ul>
+<li>mismatched Python versions across metadata, CI, and runtime;</li>
+<li>floating <code>latest</code> production images;</li>
+<li>root container execution;</li>
+<li>import-time connections or file handlers;</li>
+<li>per-request unclosed integration clients;</li>
+<li><code>next(get_session())</code> session acquisition;</li>
+<li>hidden repository commits;</li>
+<li>blocking I/O directly inside async routes;</li>
+<li>evaluated timestamp or mutable model defaults;</li>
+<li>returning private persistence models publicly;</li>
+<li>wildcard credentialed CORS;</li>
+<li>raw token or session logging;</li>
+<li>broad exceptions translated to <code>404</code>;</li>
+<li>failed tasks reported as successful results;</li>
+<li>unbounded list endpoints or fan-out;</li>
+<li>generic dumping-ground modules;</li>
+<li>stale documentation presented as current architecture.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2026, Wojciech Nowicki
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/wnowicki" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.select", "navigation.sections", "navigation.top", "search.highlight", "search.share", "search.suggest"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
