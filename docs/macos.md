@@ -34,12 +34,24 @@ brew install --cask zoom
 ### Development
 
 ```sh
-brew install git
 brew install --cask visual-studio-code
-brew install --cask github
-brew install --cask sourcetree
 brew install --cask cyberduck
 brew install pre-commit
+```
+
+#### Version Control
+
+```sh
+brew install git
+brew install lazygit
+brew install --cask github
+brew install --cask sourcetree
+```
+### Containers
+
+```sh
+brew install --cask docker
+brew install lazydocker
 ```
 
 #### Python
@@ -71,7 +83,6 @@ brew install wget
 
 # Docker
 brew install bash-completion
-brew install --cask docker
 brew install kubectl
 brew install helm
 brew install jq
