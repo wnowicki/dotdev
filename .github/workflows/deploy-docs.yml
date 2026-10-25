@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  schedule:
+    # Rebuild the current day's result every morning in Europe/Warsaw.
+    - cron: "15 3 * * *"
   workflow_dispatch:
 
 permissions:
@@ -28,6 +31,9 @@ jobs:
 
       - name: Install dependencies
         run: uv sync
+
+      - name: Generate mirror days
+        run: uv run python scripts/generate_mirror_days.py
 
       - name: Deploy to GitHub Pages
         run: uv run mkdocs gh-deploy --force

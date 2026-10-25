@@ -8,6 +8,7 @@ copyright: 2026, Wojciech Nowicki
 
 nav:
   - Home: index.md
+  - Mirror Days: mirror-days.md
   - GIT: git.md
   - MacOS: macos.md
 
