@@ -47,17 +47,36 @@ brew install lazygit
 brew install --cask github
 brew install --cask sourcetree
 ```
-### Containers
+
+#### Containers
 
 ```sh
 brew install --cask docker
 brew install lazydocker
+brew install kubectl
+brew install helm
+brew install jq
 ```
 
 #### Python
 
 ```sh
 brew install uv
+```
+
+#### DB Clients
+
+```sh
+brew install --cask beekeeper-studio
+brew install --cask mysqlworkbench
+brew install --cask robo-3t
+```
+
+### CLI
+
+```sh
+brew install mole # cleanup tool
+brew install bat # better cat
 ```
 
 ### Drawing / Graphics
@@ -83,14 +102,6 @@ brew install wget
 
 # Docker
 brew install bash-completion
-brew install kubectl
-brew install helm
-brew install jq
-
-# DB Clients
-brew install --cask beekeeper-studio
-brew install --cask mysqlworkbench
-brew install --cask robo-3t
 
 # Knowledge Base
 brew install --cask obsidian
