@@ -1,5 +1,5 @@
 site_name: DotDev
-#site_description:
+site_description: Wojciech Nowicki's personal engineering notebook — software engineering, architecture, AI, practical recipes, and experiments.
 site_author: Wojciech Nowicki
 site_url: https://wnowicki.dev
 repo_url: https://github.com/wnowicki/dotdev
