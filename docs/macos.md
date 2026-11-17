@@ -44,6 +44,7 @@ brew install pre-commit
 ```sh
 brew install git
 brew install lazygit
+brew install glab
 brew install --cask github
 brew install --cask sourcetree
 ```
